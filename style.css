@@ -2,6 +2,19 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
+/* test */
+
+#link-to-paper {
+  margin-right: 30px; /* Adjust the right margin of the link */
+}
+
+/* .clickable-label {
+  margin-left: 20px; /* Adjust the left margin of the label 
+} 
+*/
+
+/* test */
+
 * {
   margin: 0;
   padding: 0;
@@ -325,6 +338,7 @@ section {
 .custom-link {
   color: blue; /* Default color */
   text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Changes the cursor to a hand (pointer) */
 }
 
 .custom-link:hover {
@@ -382,9 +396,10 @@ article .icon {
 }
 
 .content {
+  margin-top: 10px; /* Adjust this value to control the space between the label and the text body */
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease; /* Add a smooth transition */
+  transition: max-height 0.5s ease; /* Smooth transition */
 }
 
 #toggle:checked + label + .content {
@@ -415,7 +430,6 @@ article .icon {
 .toggle-checkbox:checked + .clickable-label::after {
   content: "🔼"; /* Changes icon when checkbox is checked */
 }
-
 
 /* PROJECTS SECTION */
 
