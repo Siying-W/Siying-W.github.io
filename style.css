@@ -403,7 +403,8 @@ article .icon {
 }
 
 #toggle:checked + label + .content {
-  max-height: 600px;
+  max-height: 3000px;
+  /* height: auto; doesn't work */
 }
 
 /* clickable collapse */
