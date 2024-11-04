@@ -1,3 +1,5 @@
+
+
 @media screen and (max-width: 1400px) {
   #profile {
     height: 83vh;
@@ -37,7 +39,7 @@
   section {
     margin: 0 5%;
   }
-  .section__pic-container {
+  .section__pic-container, .slideshow-container,.slide-pic {
     width: 275px;
     height: 275px;
     margin: 0 auto 2rem;
@@ -86,7 +88,7 @@
     gap: 0.5rem;
     text-align: center;
   }
-  .section__pic-container {
+  .section__pic-container, .slideshow-container,.slide-pic {
     width: auto;
     height: 46vw;
     justify-content: center;

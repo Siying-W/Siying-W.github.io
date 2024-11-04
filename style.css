@@ -335,6 +335,14 @@ section {
   position: relative;
 }
 
+#Experience {
+  position: relative;
+}
+
+#BeyondResearch {
+  position: relative;
+}
+
 .custom-link {
   color: blue; /* Default color */
   text-decoration: none; /* Remove underline */
@@ -509,3 +517,55 @@ footer {
 footer p {
   text-align: center;
 }
+
+
+
+
+/* Slideshow container ++++++++++++++++++++++++++++++++++++++++++++++*/
+/* Slideshow container for fixed size */
+.slideshow-container{
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  border-radius: 2rem;
+  /* overflow: hidden; */
+}
+
+/* Ensure images fill the square container without distortion */
+.slide-pic{
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 2rem; /* Matches the style of About section images */
+}
+
+/* Previous and Next Buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 8px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.3s;
+  user-select: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Button Hover Effects */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
