@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Alice Wang</title> -->
+    <title>Alice Wang | Ph.D Candidate, Sauder School of Business at UBC</title>
+    <meta
+      name="description"
+      content="Alice Wang, a Ph.D. candidate at UBC Sauder School of Business, 
+      researching spatial and urban economics. Explore my research and contact details here."
+    />
+    <link rel="icon" type="image/png" href="./assets/ice cream.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Alice Wang</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#Research">Research</a></li>
+          <li><a href="#Experience">Experience</a></li>
+          <li><a href="#BeyondResearch">Beyond Research</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Alice Wang</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#Research" onclick="toggleMenu()">Research</a></li>
+          <li><a href="#Experience" onclick="toggleMenu()">Experience</a></li>
+          <li>
+            <a href="#BeyondResearch" onclick="toggleMenu()">Beyond Research</a>
+          </li>
+          <!-- new add -->
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img
+          src="./assets/Siying Wang photo sq.jpg"
+          alt="Siying Wang profile picture"
+          class="about-pic"
+        />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Alice (Siying) Wang</h1>
+        <p class="section__text__p2">
+          Ph.D Candidate<br />
+          Sauder School of Business at UBC
+        </p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/CV_Siying_Wang.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <!-- <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://linkedin.com/'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/'"
+          />
+        </div> -->
+      </div>
+    </section>
+    <section id="about">
+      <!-- <p class="section__text__p1">Get To Know More</p> -->
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/about sq.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <!-- <div class="about-containers">
+            <div class="details-container">
+              <h4 style="font-size: 18px">Ph.D Candidate</h4>
+              <p style="font-size: 14px">
+                University of British Columbia, Sauder School of Business
+              </p>
+            </div>
+          </div> -->
+          <div class="text-container">
+            <p style="margin-bottom: 20px">
+              I am a PhD candidate in Strategy & Business Economics at the
+              Sauder School of Business, UBC. My research applies methods from
+              industrial organizations to study topics in spatial and urban
+              economics, and international trade. I'm interested in getting
+              insights from the analysis of large-scale digital data.
+            </p>
+            <p>
+              I'm on the 2024-25 job market. My job market paper shows the
+              significant disamenity of urban highways on local travel and
+              quantifies the welfare effects of counterfactual urban highways
+              using smartphone GPS and commuting data.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#Research'"
+      />
+    </section>
+    <section id="Research">
+      <!-- <p class="section__text__p1">Explore My</p> -->
+      <h1 class="title">Research</h1>
+      <div class="Research-details-container">
+        <div class="Research-containers">
+          <div class="details-container">
+            <h2 class="Research-sub-title">Publications</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>
+                    Environmental Regulations and International Trade: A
+                    Quantitative Economic Analysis of World Pollution Emissions.
+                  </h3>
+                  <p>
+                    With Yuwan Duan, Ting Ji, Yi Lu. Journal of Public
+                    Economics, 2021.
+                  </p>
+                  <a
+                    href="https://doi.org/10.1016/j.jpubeco.2021.104521"
+                    class="custom-link"
+                    >Link to Paper</a
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="Research-sub-title">Job Market Paper</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>
+                    Are Highways Conduits or Barriers for Urban Travelers? A
+                    Welfare Analysis using Smartphone Data.
+                  </h3>
+                  <p>
+                    - "Runner-up", Bank of Canada Graduate Student Paper Award,
+                    2024
+                  </p>
+                  <p>
+                    - "Honorable Mention", UEA North American Best Student Paper
+                    Prize, 2024
+                  </p>
+                  <a
+                    class="custom-link"
+                    id="link-to-paper"
+                    onclick="window.open('./assets/JMP_Draft.pdf')"
+                  >
+                    Link to Draft
+                  </a>
+                  <a
+                    class="custom-link"
+                    id="link-to-paper"
+                    onclick="window.open('./assets/JMP Write-up.pdf')"
+                  >
+                    Non-technical Write-up
+                  </a>
+                  <input type="checkbox" id="toggle" class="toggle-checkbox" />
+                  <label for="toggle" class="clickable-label"
+                    >Show Abstract:</label
+                  >
+                  <!-- "clickable-label" -->
+                  <div class="content">
+                    <p>
+                      This paper uses smartphone GPS data to study the impact of
+                      highways on intracity non-work travel within the Seattle
+                      MSA. Using a discrete choice framework, I show that
+                      destinations that are accessed by traveling on or across a
+                      highway are visited 17% less than other destinations,
+                      ceteris paribus. This effect is non-linear in travel
+                      distance and is especially significant for short trips by
+                      travelers in urbanized zones. I then quantify the welfare
+                      effects of two counterfactual scenarios with alternative
+                      highway systems using a quantitative urban model that
+                      incorporates non-work travel. I find that welfare
+                      increases by 10.2% if the urban highways are replaced with
+                      an underground system and by 9.0% if they are replaced
+                      with primary surface roads. For both exercises, residents
+                      in the urban core benefit from amenity improvements,
+                      albeit at the cost of reduced amenities in suburban zones.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="Research-sub-title">Work in Progress</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>
+                    Language Choices and Cross Border Interactions: Pathways to
+                    a Lingua Franca.
+                  </h3>
+                  <p>With Keith Head & Thierry Mayer</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#Experience'"
+      />
+    </section>
+    <section id="Experience">
+      <!-- <p class="section__text__p1">Browse My Recent</p> -->
+      <h1 class="title">Experience</h1>
+      <div class="Research-details-container">
+        <div class="Research-containers">
+          <div class="details-container">
+            <h2 class="Research-sub-title">Teaching</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Urban Land Economics (2022W, 2023W)</h3>
+                  <p>
+                    University of British Columbia, Sauder School of Business
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="Research-sub-title">Teaching Assistant</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>International Economics (Undergraduate)</h3>
+                  <p>
+                    University of British Columbia, Sauder School of Business
+                  </p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Managerial Economics (MBA)</h3>
+                  <p>
+                    University of British Columbia, Sauder School of Business
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="Research-sub-title">Research Assistant</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Research icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Leader of an undergraduate RA group</h3>
+                  <p>RA for Prof. Ken Kikkawa</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#BeyondResearch'"
+      />
+    </section>
+
+    <!-- new BeyondResearch section -->
+    <section id="BeyondResearch">
+      <h1 class="title">Beyond Research</h1>
+      <div class="section-container">
+        <!-- <div class="section__pic-container">
+          <img src="./assets/climbing.jpg" alt="Climbing" class="about-pic" />
+        </div> -->
+        <div class="section__pic-container slideshow-container">
+          <!-- Slide Images -->
+          <div class="mySlides fade">
+            <img
+              src="./assets/climbing1.jpg"
+              alt="Climbing Photo 1"
+              class="slide-pic"
+            />
+          </div>
+          <div class="mySlides fade">
+            <img
+              src="./assets/climbing2.jpg"
+              alt="Climbing Photo 2"
+              class="slide-pic"
+            />
+          </div>
+          <div class="mySlides fade">
+            <img
+              src="./assets/climbing3.jpg"
+              alt="Climbing Photo 3"
+              class="slide-pic"
+            />
+          </div>
+          <!-- Navigation Buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <div class="about-details-container">
+          <div class="text-container">
+            <p style="margin-bottom: 20px">
+              I find strength and inspiration in nature, especially through the
+              challenges of rock and ice climbing. Each climb refines my focus,
+              demanding an appreciation for precision and a calm, steady mind.
+              Alongside friends, these adventures bring out laughter and trust,
+              reminding me of the joy and connection that comes from shared
+              goals and pushing limits together. In every ascent, I'm reminded
+              of the balance and vitality that these pursuits bring to my life,
+              both mentally and physically.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <!-- new BeyondResearch section -->
+
+    <section id="contact">
+      <!-- <p class="section__text__p1">Get in Touch</p> -->
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:siying.wang@ubc.ca">siying.wang@ubc.ca</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p>
+            <a href="https://www.linkedin.com/in/alice-wang-3b35a3130/"
+              >Alice Wang</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#Research">Research</a></li>
+            <li><a href="#Experience">Experience</a></li>
+            <li><a href="#BeyondResearch">Beyond Research</a></li>
+            <!-- New Link in Footer -->
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2024 Siying Wang. All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
