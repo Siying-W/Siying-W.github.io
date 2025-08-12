@@ -205,7 +205,14 @@ section {
 
 .section__text__p2 {
   font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.section__text__institution {
+  font-size: 1rem;
   margin-bottom: 1rem;
+  color: rgb(100, 100, 100);
+  font-weight: 300;
 }
 
 .title {
