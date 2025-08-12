@@ -205,12 +205,12 @@ section {
 
 .section__text__p2 {
   font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
 .section__text__institution {
   font-size: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
   color: rgb(100, 100, 100);
   font-weight: 300;
 }
@@ -218,6 +218,7 @@ section {
 .title {
   font-size: 2.5rem;
   text-align: center;
+  margin: 0 0 0.5rem 0;
 }
 
 #socials-container {
