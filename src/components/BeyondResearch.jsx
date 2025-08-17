@@ -6,6 +6,7 @@ const BeyondResearch = () => {
   const [containerHeight, setContainerHeight] = useState(400);
   
   const slides = [
+    '/assets/climbingAK.jpg',
     '/assets/climbing1.jpg',
     '/assets/climbing2.jpg',
     '/assets/climbing3.jpg',
