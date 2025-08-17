@@ -1,17 +1,17 @@
-import { ChevronLeft, ChevronRight, Mountain } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, Mountain } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const BeyondResearch = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [containerHeight, setContainerHeight] = useState(400);
-  
+
   const slides = [
-    '/assets/climbingAK.jpg',
-    '/assets/climbing1.jpg',
-    '/assets/climbing2.jpg',
-    '/assets/climbing3.jpg',
-    '/assets/climbing4.jpg',
-    '/assets/climbing5.jpg'
+    "/assets/climbingAK.jpg",
+    "/assets/climbing1.jpg",
+    "/assets/climbing2.jpg",
+    "/assets/climbing3.jpg",
+    "/assets/climbing4.jpg",
+    "/assets/climbing5.jpg",
   ];
 
   const handleImageLoad = (event) => {
@@ -27,7 +27,8 @@ const BeyondResearch = () => {
     // Recalculate height when slide changes
     const img = new Image();
     img.onload = () => {
-      const containerWidth = document.querySelector('.slideshow-container')?.offsetWidth || 400;
+      const containerWidth =
+        document.querySelector(".slideshow-container")?.offsetWidth || 400;
       const aspectRatio = img.naturalHeight / img.naturalWidth;
       const calculatedHeight = containerWidth * aspectRatio;
       setContainerHeight(Math.max(calculatedHeight, 400));
@@ -72,44 +73,56 @@ const BeyondResearch = () => {
           <div className="space-y-6">
             <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
               <p className="text-lg text-gray-700 leading-relaxed">
-                I find strength and inspiration in nature, especially through the challenges of rock and ice climbing. 
-                Each climb refines my focus, demanding an appreciation for precision and a calm, steady mind. 
-                Alongside friends, these adventures bring out laughter and trust, reminding me of the joy and 
-                connection that comes from shared goals and pushing limits together. In every ascent, I'm reminded 
-                of the balance and vitality that these pursuits bring to my life, both mentally and physically.
+                I find strength and inspiration in nature, especially through
+                the challenges of rock and ice climbing. Each climb refines my
+                focus, demanding an appreciation for precision and a calm,
+                steady mind. Alongside friends, these adventures bring out
+                laughter and trust, reminding me of the joy and connection that
+                comes from shared goals and pushing limits together. In every
+                ascent, I'm reminded of the balance and vitality that these
+                pursuits bring to my life, both mentally and physically.
               </p>
             </div>
 
             {/* Climbing Stats */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-primary-600 mb-2">5+</div>
-                <div className="text-gray-600">Years Climbing</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">
+                  Style
+                </div>
+                <div className="text-gray-600">
+                  Multi-pitch Ice & Traditional Climbing
+                </div>
               </div>
               <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-primary-600 mb-2">100+</div>
-                <div className="text-gray-600">Routes Completed</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">
+                  Location
+                </div>
+                <div className="text-gray-600">British Columbia, Alaska</div>
               </div>
             </div>
           </div>
 
-                    {/* Slideshow */}
+          {/* Slideshow */}
           <div className="relative">
             <div className="bg-white rounded-2xl p-4 shadow-2xl border border-gray-100">
               <div className="relative overflow-hidden rounded-xl slideshow-container">
-                <div className="relative" style={{ height: `${containerHeight}px` }}>
-                    {slides.map((slide, index) => (
-                      <img
-                        key={index}
-                        src={slide}
-                        alt={`Climbing adventure ${index + 1}`}
-                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                          index === currentSlide ? 'opacity-100' : 'opacity-0'
-                        }`}
-                        onLoad={handleImageLoad}
-                      />
-                    ))}
-                  </div>
+                <div
+                  className="relative"
+                  style={{ height: `${containerHeight}px` }}
+                >
+                  {slides.map((slide, index) => (
+                    <img
+                      key={index}
+                      src={slide}
+                      alt={`Climbing adventure ${index + 1}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                        index === currentSlide ? "opacity-100" : "opacity-0"
+                      }`}
+                      onLoad={handleImageLoad}
+                    />
+                  ))}
+                </div>
 
                 {/* Navigation Arrows */}
                 <button
@@ -133,8 +146,8 @@ const BeyondResearch = () => {
                       onClick={() => setCurrentSlide(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         index === currentSlide
-                          ? 'bg-white scale-125'
-                          : 'bg-white/50 hover:bg-white/75'
+                          ? "bg-white scale-125"
+                          : "bg-white/50 hover:bg-white/75"
                       }`}
                     />
                   ))}
@@ -149,10 +162,13 @@ const BeyondResearch = () => {
         {/* Additional Info */}
         <div className="mt-16 text-center">
           <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">The Climbing Philosophy</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              The Climbing Philosophy
+            </h3>
             <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-              Just as in research, climbing teaches patience, problem-solving, and the importance of 
-              preparation. Every route is a new challenge that requires both mental and physical resilience.
+              Just as in research, climbing teaches patience, problem-solving,
+              and the importance of preparation. Every route is a new challenge
+              that requires both mental and physical resilience.
             </p>
           </div>
         </div>
