@@ -1,4 +1,4 @@
-import { Award, FileText, TrendingUp } from 'lucide-react';
+import { Award, FileText, TrendingUp } from "lucide-react";
 
 const Research = () => {
   return (
@@ -11,10 +11,11 @@ const Research = () => {
             </div>
           </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Publications
+            Research
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Exploring the intersection of industrial organization, spatial economics, and international trade
+            Exploring the intersection of industrial organization, spatial
+            economics, and international trade
           </p>
         </div>
 
@@ -27,14 +28,18 @@ const Research = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Environmental Regulations and International Trade: A Quantitative Economic Analysis of World Pollution Emissions.
+                  Environmental Regulations and International Trade: A
+                  Quantitative Economic Analysis of World Pollution Emissions.
                 </h3>
                 <p className="text-gray-600 mb-3">
-                  With Yuwan Duan, Ting Ji, Yi Lu. <span className="font-semibold">Journal of Public Economics, 2021.</span>
+                  With Yuwan Duan, Ting Ji, Yi Lu.{" "}
+                  <span className="font-semibold">
+                    Journal of Public Economics, 2021.
+                  </span>
                 </p>
-                                  <button className="text-primary-600 hover:text-primary-700 font-medium transition-colors">
-                    Link to Paper →
-                  </button>
+                <button className="text-primary-600 hover:text-primary-700 font-medium transition-colors">
+                  Link to Paper →
+                </button>
               </div>
             </div>
           </div>
@@ -47,18 +52,25 @@ const Research = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Are Highways Conduits or Barriers for Urban Travelers? A Welfare Analysis using Smartphone Data.
+                  Are Highways Conduits or Barriers for Urban Travelers? A
+                  Welfare Analysis using Smartphone Data.
                 </h3>
-                
+
                 {/* Awards */}
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center gap-2 text-sm">
                     <Award className="w-4 h-4 text-yellow-500" />
-                    <span className="text-gray-700">"Runner-up", Bank of Canada Graduate Student Paper Award, 2024</span>
+                    <span className="text-gray-700">
+                      "Runner-up", Bank of Canada Graduate Student Paper Award,
+                      2024
+                    </span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Award className="w-4 h-4 text-yellow-500" />
-                    <span className="text-gray-700">"Honorable Mention", UEA North American Best Student Paper Prize, 2024</span>
+                    <span className="text-gray-700">
+                      "Honorable Mention", UEA North American Best Student Paper
+                      Prize, 2024
+                    </span>
                   </div>
                 </div>
 
@@ -85,7 +97,8 @@ const Research = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Language Choices and Cross Border Interactions: Pathways to a Lingua Franca.
+                  Language Choices and Cross Border Interactions: Pathways to a
+                  Lingua Franca.
                 </h3>
                 <p className="text-gray-600 mb-3">
                   With Keith Head & Thierry Mayer
