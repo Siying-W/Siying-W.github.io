@@ -1,4 +1,5 @@
 import { BookOpen } from 'lucide-react';
+import aboutPhoto from '/assets/about sq.jpg';
 
 const About = () => {
   return (
@@ -52,7 +53,7 @@ const About = () => {
             <div className="relative">
               <div className="w-full max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/assets/about sq.jpg"
+                  src={aboutPhoto}
                   alt="About Siying Wang"
                   className="w-full h-auto object-cover"
                 />

@@ -1,5 +1,7 @@
 import { Download, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import cvPdf from '/assets/CV_Siying_Wang_aca.pdf';
+import siyingPhoto from '/assets/Siying Wang photo sq.jpg';
 
 const Intro = () => {
   return (
@@ -31,7 +33,7 @@ const Intro = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
               <a
-                href="/assets/CV_Siying_Wang_aca.pdf"
+                href={cvPdf}
                 download
                 className="btn-primary inline-flex items-center gap-2"
               >
@@ -53,7 +55,7 @@ const Intro = () => {
             <div className="relative">
               <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="/assets/Siying Wang photo sq.jpg"
+                  src={siyingPhoto}
                   alt="Siying Wang"
                   className="w-full h-full object-cover"
                 />

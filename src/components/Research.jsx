@@ -1,5 +1,7 @@
 import { Award, ChevronDown, ChevronUp, FileText, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import jmpWriteup from '/assets/JMP Write-up.pdf';
+import jmpDraft from '/assets/JMP_Draft.pdf';
 
 const Research = () => {
   const [showAbstract, setShowAbstract] = useState(false);
@@ -84,7 +86,7 @@ const Research = () => {
 
                 <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
                   <a 
-                    href="/assets/JMP_Draft.pdf"
+                    href={jmpDraft}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary-600 hover:text-primary-900 font-medium transition-all duration-300 inline-block relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
@@ -92,7 +94,7 @@ const Research = () => {
                     Link to Draft
                   </a>
                   <a 
-                    href="/assets/JMP Write-up.pdf"
+                    href={jmpWriteup}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary-600 hover:text-primary-900 font-medium transition-all duration-300 inline-block relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"

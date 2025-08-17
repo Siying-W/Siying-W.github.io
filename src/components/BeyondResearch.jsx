@@ -1,17 +1,23 @@
 import { ChevronLeft, ChevronRight, Mountain } from "lucide-react";
 import { useEffect, useState } from "react";
+import climbing1 from '/assets/climbing1.jpg';
+import climbing2 from '/assets/climbing2.jpg';
+import climbing3 from '/assets/climbing3.jpg';
+import climbing4 from '/assets/climbing4.jpg';
+import climbing5 from '/assets/climbing5.jpg';
+import climbingAK from '/assets/climbingAK.jpg';
 
 const BeyondResearch = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [containerHeight, setContainerHeight] = useState(400);
 
   const slides = [
-    "/assets/climbingAK.jpg",
-    "/assets/climbing1.jpg",
-    "/assets/climbing2.jpg",
-    "/assets/climbing3.jpg",
-    "/assets/climbing4.jpg",
-    "/assets/climbing5.jpg",
+    climbingAK,
+    climbing1,
+    climbing2,
+    climbing3,
+    climbing4,
+    climbing5,
   ];
 
   const handleImageLoad = (event) => {
