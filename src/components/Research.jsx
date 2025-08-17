@@ -44,7 +44,7 @@ const Research = () => {
                   href="https://www.sciencedirect.com/science/article/abs/pii/S0047272721001572?via%3Dihub"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-block"
+                  className="text-primary-600 hover:text-primary-900 font-medium transition-all duration-300 inline-block relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
                 >
                   Link to Paper →
                 </a>
@@ -87,7 +87,7 @@ const Research = () => {
                     href="/assets/JMP_Draft.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-block"
+                    className="text-primary-600 hover:text-primary-900 font-medium transition-all duration-300 inline-block relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
                   >
                     Link to Draft
                   </a>
@@ -95,13 +95,13 @@ const Research = () => {
                     href="/assets/JMP Write-up.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-block"
+                    className="text-primary-600 hover:text-primary-900 font-medium transition-all duration-300 inline-block relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
                   >
                     Non-technical Write-up
                   </a>
                   <button 
                     onClick={() => setShowAbstract(!showAbstract)}
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-flex items-center gap-2"
+                    className="text-primary-600 hover:text-primary-900 font-medium transition-all duration-300 inline-flex items-center gap-2 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
                   >
                     {showAbstract ? 'Hide Abstract' : 'Show Abstract'}
                     {showAbstract ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

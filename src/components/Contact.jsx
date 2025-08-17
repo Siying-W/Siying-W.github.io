@@ -33,12 +33,23 @@ const Contact = () => {
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                      <a 
-                        href="mailto:wangsiying@mail.shufe.edu.cn"
-                        className="text-blue-600 hover:text-blue-700 font-medium transition-colors break-all"
+                      <button 
+                        onClick={(event) => {
+                          navigator.clipboard.writeText('wangsiying@mail.shufe.edu.cn');
+                          // Optional: Add a visual feedback
+                          const button = event.target;
+                          const originalText = button.textContent;
+                          button.textContent = 'Copied!';
+                          button.className = 'text-green-600 hover:text-green-800 font-medium transition-all duration-300 break-all cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-green-600 after:transition-all after:duration-300 after:w-full pb-1';
+                          setTimeout(() => {
+                            button.textContent = originalText;
+                            button.className = 'text-blue-600 hover:text-blue-900 font-medium transition-all duration-300 break-all cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1';
+                          }, 2000);
+                        }}
+                        className="text-blue-600 hover:text-blue-900 font-medium transition-all duration-300 break-all cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
                       >
                         wangsiying@mail.shufe.edu.cn
-                      </a>
+                      </button>
                     </div>
                   </div>
 
@@ -53,7 +64,7 @@ const Contact = () => {
                         href="https://www.linkedin.com/in/alice-wang-3b35a3130/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                        className="text-blue-600 hover:text-blue-900 font-medium transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 after:w-0 hover:after:w-full pb-1"
                       >
                         Alice Wang
                       </a>
