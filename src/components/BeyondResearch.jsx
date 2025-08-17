@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const BeyondResearch = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(400);
   
   const slides = [
     '/assets/climbing1.jpg',
@@ -12,19 +13,40 @@ const BeyondResearch = () => {
     '/assets/climbing5.jpg'
   ];
 
+  const handleImageLoad = (event) => {
+    const img = event.target;
+    const containerWidth = img.parentElement.offsetWidth;
+    const aspectRatio = img.naturalHeight / img.naturalWidth;
+    const calculatedHeight = containerWidth * aspectRatio;
+    setContainerHeight(Math.max(calculatedHeight, 400)); // Minimum height of 400px
+  };
+
+  const handleSlideChange = (newSlideIndex) => {
+    setCurrentSlide(newSlideIndex);
+    // Recalculate height when slide changes
+    const img = new Image();
+    img.onload = () => {
+      const containerWidth = document.querySelector('.slideshow-container')?.offsetWidth || 400;
+      const aspectRatio = img.naturalHeight / img.naturalWidth;
+      const calculatedHeight = containerWidth * aspectRatio;
+      setContainerHeight(Math.max(calculatedHeight, 400));
+    };
+    img.src = slides[newSlideIndex];
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      handleSlideChange((currentSlide + 1) % slides.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [currentSlide, slides.length]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    handleSlideChange((currentSlide + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    handleSlideChange((currentSlide - 1 + slides.length) % slides.length);
   };
 
   return (
@@ -70,22 +92,23 @@ const BeyondResearch = () => {
             </div>
           </div>
 
-          {/* Slideshow */}
+                    {/* Slideshow */}
           <div className="relative">
             <div className="bg-white rounded-2xl p-4 shadow-2xl border border-gray-100">
-              <div className="relative overflow-hidden rounded-xl">
-                <div className="relative h-96 lg:h-[500px]">
-                  {slides.map((slide, index) => (
-                    <img
-                      key={index}
-                      src={slide}
-                      alt={`Climbing adventure ${index + 1}`}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                        index === currentSlide ? 'opacity-100' : 'opacity-0'
-                      }`}
-                    />
-                  ))}
-                </div>
+              <div className="relative overflow-hidden rounded-xl slideshow-container">
+                <div className="relative" style={{ height: `${containerHeight}px` }}>
+                    {slides.map((slide, index) => (
+                      <img
+                        key={index}
+                        src={slide}
+                        alt={`Climbing adventure ${index + 1}`}
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                          index === currentSlide ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        onLoad={handleImageLoad}
+                      />
+                    ))}
+                  </div>
 
                 {/* Navigation Arrows */}
                 <button
@@ -118,9 +141,7 @@ const BeyondResearch = () => {
               </div>
             </div>
 
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-200 rounded-full opacity-20"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary-300 rounded-full opacity-30"></div>
+            {/* Decorative Elements - Removed for cleaner appearance */}
           </div>
         </div>
 
