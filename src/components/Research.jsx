@@ -1,6 +1,9 @@
-import { Award, FileText, TrendingUp } from "lucide-react";
+import { Award, ChevronDown, ChevronUp, FileText, TrendingUp } from "lucide-react";
+import { useState } from "react";
 
 const Research = () => {
+  const [showAbstract, setShowAbstract] = useState(false);
+  
   return (
     <div className="section-padding bg-gray-50">
       <div className="container-custom">
@@ -22,11 +25,11 @@ const Research = () => {
         <div className="space-y-12">
           {/* Publications */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="p-3 bg-green-100 rounded-full flex-shrink-0">
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+              <div className="p-3 bg-green-100 rounded-full flex-shrink-0 self-center sm:self-start">
                 <FileText className="w-6 h-6 text-green-600" />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Environmental Regulations and International Trade: A
                   Quantitative Economic Analysis of World Pollution Emissions.
@@ -37,20 +40,25 @@ const Research = () => {
                     Journal of Public Economics, 2021.
                   </span>
                 </p>
-                <button className="text-primary-600 hover:text-primary-700 font-medium transition-colors">
+                <a 
+                  href="https://www.sciencedirect.com/science/article/abs/pii/S0047272721001572?via%3Dihub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-block"
+                >
                   Link to Paper →
-                </button>
+                </a>
               </div>
             </div>
           </div>
 
           {/* Job Market Paper */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="p-3 bg-blue-100 rounded-full flex-shrink-0">
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
+              <div className="p-3 bg-blue-100 rounded-full flex-shrink-0 self-center sm:self-start">
                 <Award className="w-6 h-6 text-blue-600" />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Are Highways Conduits or Barriers for Urban Travelers? A
                   Welfare Analysis using Smartphone Data.
@@ -58,14 +66,14 @@ const Research = () => {
 
                 {/* Awards */}
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2 text-sm justify-center sm:justify-start">
                     <Award className="w-4 h-4 text-yellow-500" />
                     <span className="text-gray-700">
                       "Runner-up", Bank of Canada Graduate Student Paper Award,
                       2024
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2 text-sm justify-center sm:justify-start">
                     <Award className="w-4 h-4 text-yellow-500" />
                     <span className="text-gray-700">
                       "Honorable Mention", UEA North American Best Student Paper
@@ -74,16 +82,43 @@ const Research = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <button className="text-primary-600 hover:text-primary-700 font-medium transition-colors">
+                <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+                  <a 
+                    href="/assets/JMP_Draft.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-block"
+                  >
                     Link to Draft
-                  </button>
-                  <button className="text-primary-600 hover:text-primary-700 font-medium transition-colors">
+                  </a>
+                  <a 
+                    href="/assets/JMP Write-up.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-block"
+                  >
                     Non-technical Write-up
+                  </a>
+                  <button 
+                    onClick={() => setShowAbstract(!showAbstract)}
+                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors inline-flex items-center gap-2"
+                  >
+                    {showAbstract ? 'Hide Abstract' : 'Show Abstract'}
+                    {showAbstract ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
-                  <button className="text-primary-600 hover:text-primary-700 font-medium transition-colors">
-                    Show Abstract
-                  </button>
+                </div>
+                
+                {/* Abstract Text */}
+                <div 
+                  className={`mt-4 overflow-hidden transition-all duration-300 ease-in-out ${
+                    showAbstract ? 'max-h-[2600px] opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p className="text-gray-700 leading-relaxed">
+                      This paper uses smartphone GPS data to study the impact of highways on intracity non-work travel within the Seattle MSA. Using a discrete choice framework, I show that destinations that are accessed by traveling on or across a highway are visited 17% less than other destinations, ceteris paribus. This effect is non-linear in travel distance and is especially significant for short trips by travelers in urbanized zones. I then quantify the welfare effects of two counterfactual scenarios with alternative highway systems using a quantitative urban model that incorporates non-work travel. I find that welfare increases by 10.2% if the urban highways are replaced with an underground system and by 9.0% if they are replaced with primary surface roads. For both exercises, residents in the urban core benefit from amenity improvements, albeit at the cost of reduced amenities in suburban zones.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -91,11 +126,11 @@ const Research = () => {
 
           {/* Work in Progress */}
           <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-purple-100 rounded-full flex-shrink-0">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="p-3 bg-purple-100 rounded-full flex-shrink-0 self-center sm:self-start">
                 <TrendingUp className="w-6 h-6 text-purple-600" />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Language Choices and Cross Border Interactions: Pathways to a
                   Lingua Franca.
