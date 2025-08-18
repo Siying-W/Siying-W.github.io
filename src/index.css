@@ -33,7 +33,7 @@
 
   /* Section styling for single page scroll */
   section {
-    @apply min-h-screen flex items-center justify-center w-full;
+    @apply min-h-screen w-full;
   }
 
   section:not(:last-child) {
@@ -42,7 +42,7 @@
 
   /* Full-width background wrapper */
   .full-width-bg {
-    @apply w-full min-h-screen flex items-center justify-center;
+    @apply w-full min-h-screen flex items-start justify-center;
   }
 
   /* Mobile menu animations */

@@ -11,7 +11,7 @@ const Intro = () => {
   };
 
   return (
-    <div className="full-width-bg bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="full-width-bg bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-16 sm:pt-20 pb-16">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
