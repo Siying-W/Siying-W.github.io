@@ -18,7 +18,12 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const extraPadding = window.innerWidth <= 768 ? 300 : 32; // Much more padding on mobile
+      const elementPosition = element.offsetTop - extraPadding;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
     }
     setIsOpen(false);
   };
