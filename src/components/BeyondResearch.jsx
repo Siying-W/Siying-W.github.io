@@ -91,12 +91,12 @@ const BeyondResearch = () => {
             </div>
 
             {/* Climbing Stats */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100">
                 <div className="text-3xl font-bold text-primary-600 mb-2">
                   Style
                 </div>
-                <div className="text-gray-600">
+                <div className="text-gray-600 text-sm sm:text-base">
                   Multi-pitch Ice & Traditional Climbing
                 </div>
               </div>
@@ -104,7 +104,9 @@ const BeyondResearch = () => {
                 <div className="text-3xl font-bold text-primary-600 mb-2">
                   Location
                 </div>
-                <div className="text-gray-600">British Columbia, Alaska</div>
+                <div className="text-gray-600 text-sm sm:text-base leading-tight">
+                  British Columbia,<br className="sm:hidden" /> Alaska
+                </div>
               </div>
             </div>
           </div>
