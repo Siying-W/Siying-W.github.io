@@ -3,7 +3,7 @@ import aboutPhoto from '/assets/about sq.jpg';
 
 const About = () => {
   return (
-    <div className="full-width-bg bg-white">
+    <div className="full-width-bg bg-white pt-16 md:pt-0">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}

@@ -45,6 +45,13 @@
     @apply w-full min-h-screen flex items-center justify-center;
   }
 
+  /* Desktop-specific vertical centering adjustment */
+  @media (min-width: 1024px) {
+    .full-width-bg {
+      margin-top: -100px;
+    }
+  }
+
   /* Mobile menu animations */
   .mobile-menu-enter {
     max-height: 0;
