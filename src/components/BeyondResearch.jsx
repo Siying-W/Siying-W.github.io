@@ -58,7 +58,7 @@ const BeyondResearch = () => {
   };
 
   return (
-    <div className="section-padding bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="full-width-bg bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="container-custom">
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">

@@ -1,11 +1,17 @@
 import { Download, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import cvPdf from '/assets/CV_Siying_Wang_aca.pdf';
 import siyingPhoto from '/assets/Siying Wang photo sq.jpg';
 
 const Intro = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="full-width-bg bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -40,13 +46,13 @@ const Intro = () => {
                 <Download size={20} />
                 Download CV
               </a>
-              <Link
-                to="/contact"
+              <button
+                onClick={scrollToContact}
                 className="btn-secondary inline-flex items-center gap-2"
               >
                 <Mail size={20} />
                 Contact Me
-              </Link>
+              </button>
             </div>
           </div>
 

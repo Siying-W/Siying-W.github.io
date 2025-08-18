@@ -3,7 +3,7 @@ import aboutPhoto from '/assets/about sq.jpg';
 
 const About = () => {
   return (
-    <div className="section-padding bg-white">
+    <div className="full-width-bg bg-white">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -41,7 +41,7 @@ const About = () => {
               </div>
               <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <h3 className="font-semibold text-gray-800 mb-2">Methodology</h3>
-                <p className="text-gray-700 text-sm">
+                <p className="text-primary-700 text-sm">
                   Large-scale Digital Data Analysis, Quantitative Methods
                 </p>
               </div>

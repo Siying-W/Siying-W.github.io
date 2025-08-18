@@ -2,7 +2,7 @@ import { BookOpen, GraduationCap, Users } from 'lucide-react';
 
 const Experience = () => {
   return (
-    <div className="section-padding bg-white">
+    <div className="full-width-bg bg-white">
       <div className="container-custom">
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">

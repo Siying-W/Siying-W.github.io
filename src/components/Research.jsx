@@ -7,7 +7,7 @@ const Research = () => {
   const [showAbstract, setShowAbstract] = useState(false);
   
   return (
-    <div className="section-padding bg-gray-50">
+    <div className="full-width-bg bg-gray-50">
       <div className="container-custom">
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">

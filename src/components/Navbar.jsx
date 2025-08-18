@@ -1,22 +1,29 @@
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const location = useLocation();
+  const [activeSection, setActiveSection] = useState('intro');
   const menuRef = useRef(null);
 
   const navItems = [
-    { name: 'About', path: '/about' },
-    { name: 'Research', path: '/research' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Beyond Research', path: '/beyond-research' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'About', id: 'about' },
+    { name: 'Research', id: 'research' },
+    { name: 'Experience', id: 'experience' },
+    { name: 'Beyond Research', id: 'beyond-research' },
+    { name: 'Contact', id: 'contact' },
   ];
 
-  const isActive = (path) => location.pathname === path;
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
+  const isActive = (sectionId) => activeSection === sectionId;
 
   const toggleMenu = () => {
     if (!isAnimating) {
@@ -41,37 +48,51 @@ const Navbar = () => {
     }
   }, [isOpen]);
 
-  // Close menu when route changes
+  // Update active section based on scroll position
   useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
+    const handleScroll = () => {
+      const sections = navItems.map(item => item.id);
+      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [navItems]);
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="container-custom">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Home Link */}
-          <Link 
-            to="/" 
+          <button 
+            onClick={() => scrollToSection('intro')}
             className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors"
           >
             Siying Wang
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <Link
+              <button
                 key={item.name}
-                to={item.path}
+                onClick={() => scrollToSection(item.id)}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive(item.path)
+                  isActive(item.id)
                     ? 'text-primary-600 bg-primary-50'
                     : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                 }`}
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
           </div>
 
@@ -98,11 +119,11 @@ const Navbar = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
             {navItems.map((item, index) => (
-              <Link
+              <button
                 key={item.name}
-                to={item.path}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ease-out transform ${
-                  isActive(item.path)
+                onClick={() => scrollToSection(item.id)}
+                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ease-out transform ${
+                  isActive(item.id)
                     ? 'text-primary-600 bg-primary-50'
                     : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                 } ${
@@ -113,10 +134,9 @@ const Navbar = () => {
                 style={{
                   transitionDelay: isOpen ? `${index * 75}ms` : '0ms'
                 }}
-                onClick={() => setIsOpen(false)}
               >
                 {item.name}
-              </Link>
+              </button>
             ))}
           </div>
         </div>

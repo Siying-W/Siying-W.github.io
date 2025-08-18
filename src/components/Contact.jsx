@@ -2,7 +2,7 @@ import { Building, Linkedin, Mail } from 'lucide-react';
 
 const Contact = () => {
   return (
-    <div className="section-padding bg-gradient-to-br from-blue-50 to-indigo-50">
+    <div className="full-width-bg bg-gradient-to-br from-blue-50 to-indigo-50">
       <div className="container-custom">
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
