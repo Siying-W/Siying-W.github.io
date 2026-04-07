@@ -1,12 +1,23 @@
 import { Building, Linkedin, Mail } from 'lucide-react';
+import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
 const Contact = () => {
+  const headerRef = useScrollReveal();
+  const contactCardRef = useScrollReveal({ threshold: 0.1 });
+  const researchCardRef = useScrollReveal({ threshold: 0.1 });
+  const setAreaRef = useStaggerReveal(4);
+  const bottomRef = useScrollReveal({ threshold: 0.1 });
+
   return (
-    <div className="full-width-bg bg-gradient-to-br from-blue-50 to-indigo-50 pt-16 sm:pt-20">
-      <div className="container-custom">
-        <div className="text-center mb-16">
+    <div className="full-width-bg animated-gradient-bg relative overflow-hidden pt-16 sm:pt-20">
+      {/* Subtle floating blobs */}
+      <div className="blob blob-animate-2 w-64 h-64 bg-primary-300/10 top-20 -right-20" />
+      <div className="blob blob-animate-3 w-48 h-48 bg-indigo-300/10 bottom-40 -left-10" />
+
+      <div className="container-custom relative z-10">
+        <div ref={headerRef} className="reveal-fade-up text-center mb-16">
           <div className="flex justify-center mb-6">
-            <div className="p-4 bg-primary-100 rounded-full">
+            <div className="p-4 bg-primary-100/80 backdrop-blur-sm rounded-full icon-pulse">
               <Mail className="w-10 h-10 text-primary-600" />
             </div>
           </div>
@@ -21,22 +32,21 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Contact Information */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+            <div ref={contactCardRef} className="reveal-fade-left space-y-6">
+              <div className="glass-card p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-                
+
                 <div className="space-y-6">
                   {/* Email */}
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-blue-100 rounded-full flex-shrink-0">
+                    <div className="p-3 bg-blue-100/80 backdrop-blur-sm rounded-full flex-shrink-0">
                       <Mail className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                      <button 
+                      <button
                         onClick={(event) => {
                           navigator.clipboard.writeText('wangsiying@mail.shufe.edu.cn');
-                          // Optional: Add a visual feedback
                           const button = event.target;
                           const originalText = button.textContent;
                           button.textContent = 'Copied!';
@@ -55,12 +65,12 @@ const Contact = () => {
 
                   {/* LinkedIn */}
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-blue-100 rounded-full flex-shrink-0">
+                    <div className="p-3 bg-blue-100/80 backdrop-blur-sm rounded-full flex-shrink-0">
                       <Linkedin className="w-6 h-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-900 mb-1">LinkedIn</h3>
-                      <a 
+                      <a
                         href="https://www.linkedin.com/in/alice-wang-3b35a3130/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -73,7 +83,7 @@ const Contact = () => {
 
                   {/* Institution */}
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-green-100 rounded-full flex-shrink-0">
+                    <div className="p-3 bg-green-100/80 backdrop-blur-sm rounded-full flex-shrink-0">
                       <Building className="w-6 h-6 text-green-600" />
                     </div>
                     <div className="flex-1">
@@ -88,36 +98,36 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form or Additional Info */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+            {/* Research Areas & Collaboration */}
+            <div ref={researchCardRef} className="reveal-fade-right space-y-6" style={{ transitionDelay: '0.15s' }}>
+              <div className="glass-card p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Research Areas</h2>
-                
+
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl border border-blue-200">
+                  <div ref={setAreaRef(0)} className="stagger-item flex items-center gap-3 p-4 bg-blue-50/60 backdrop-blur-sm rounded-xl border border-blue-200/40 transition-all duration-300 hover:bg-blue-50/90 hover:translate-x-1">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                     <span className="text-blue-800 font-medium">Industrial Organization</span>
                   </div>
-                  <div className="flex items-center gap-3 p-4 bg-green-50 rounded-xl border border-green-200">
+                  <div ref={setAreaRef(1)} className="stagger-item flex items-center gap-3 p-4 bg-green-50/60 backdrop-blur-sm rounded-xl border border-green-200/40 transition-all duration-300 hover:bg-green-50/90 hover:translate-x-1">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     <span className="text-green-800 font-medium">Spatial Economics</span>
                   </div>
-                  <div className="flex items-center gap-3 p-4 bg-purple-50 rounded-xl border border-purple-200">
+                  <div ref={setAreaRef(2)} className="stagger-item flex items-center gap-3 p-4 bg-purple-50/60 backdrop-blur-sm rounded-xl border border-purple-200/40 transition-all duration-300 hover:bg-purple-50/90 hover:translate-x-1">
                     <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
                     <span className="text-purple-800 font-medium">Urban Economics</span>
                   </div>
-                  <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-xl border border-orange-200">
+                  <div ref={setAreaRef(3)} className="stagger-item flex items-center gap-3 p-4 bg-orange-50/60 backdrop-blur-sm rounded-xl border border-orange-200/40 transition-all duration-300 hover:bg-orange-50/90 hover:translate-x-1">
                     <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
                     <span className="text-orange-800 font-medium">International Trade</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-6 border border-primary-100">
+              <div className="glass-card p-6 bg-gradient-to-r from-primary-50/50 to-blue-50/50 border-primary-100/30">
                 <h3 className="font-semibold text-gray-900 mb-3">Collaboration Opportunities</h3>
                 <p className="text-gray-700 text-sm">
-                  I'm always interested in discussing potential research collaborations, 
-                  particularly in areas related to spatial economics, urban development, 
+                  I'm always interested in discussing potential research collaborations,
+                  particularly in areas related to spatial economics, urban development,
                   and international trade analysis.
                 </p>
               </div>
@@ -125,11 +135,11 @@ const Contact = () => {
           </div>
 
           {/* Additional Contact Info */}
-          <div className="mt-12 text-center">
-            <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+          <div ref={bottomRef} className="reveal-fade-up mt-12 text-center" style={{ transitionDelay: '0.2s' }}>
+            <div className="glass-card p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Response Time</h3>
               <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-                I typically respond to emails within 24-48 hours during weekdays. 
+                I typically respond to emails within 24-48 hours during weekdays.
                 For urgent matters, please include "URGENT" in your subject line.
               </p>
             </div>

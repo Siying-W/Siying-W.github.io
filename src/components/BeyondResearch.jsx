@@ -6,10 +6,15 @@ import climbing3 from '/assets/climbing3.jpg';
 import climbing4 from '/assets/climbing4.jpg';
 import climbing5 from '/assets/climbing5.jpg';
 import climbingAK from '/assets/climbingAK.jpg';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const BeyondResearch = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [containerHeight, setContainerHeight] = useState(400);
+  const headerRef = useScrollReveal();
+  const textRef = useScrollReveal({ threshold: 0.1 });
+  const slideshowRef = useScrollReveal({ threshold: 0.1 });
+  const summaryRef = useScrollReveal({ threshold: 0.1 });
 
   const slides = [
     climbingAK,
@@ -25,12 +30,11 @@ const BeyondResearch = () => {
     const containerWidth = img.parentElement.offsetWidth;
     const aspectRatio = img.naturalHeight / img.naturalWidth;
     const calculatedHeight = containerWidth * aspectRatio;
-    setContainerHeight(Math.max(calculatedHeight, 400)); // Minimum height of 400px
+    setContainerHeight(Math.max(calculatedHeight, 400));
   };
 
   const handleSlideChange = (newSlideIndex) => {
     setCurrentSlide(newSlideIndex);
-    // Recalculate height when slide changes
     const img = new Image();
     img.onload = () => {
       const containerWidth =
@@ -58,11 +62,11 @@ const BeyondResearch = () => {
   };
 
   return (
-    <div className="full-width-bg bg-gradient-to-br from-gray-50 to-blue-50 pt-16 sm:pt-20">
+    <div className="full-width-bg mesh-bg-3 pt-16 sm:pt-20">
       <div className="container-custom">
-        <div className="text-center mb-16">
+        <div ref={headerRef} className="reveal-fade-up text-center mb-16">
           <div className="flex justify-center mb-6">
-            <div className="p-4 bg-primary-100 rounded-full">
+            <div className="p-4 bg-primary-100/80 backdrop-blur-sm rounded-full icon-pulse">
               <Mountain className="w-10 h-10 text-primary-600" />
             </div>
           </div>
@@ -76,8 +80,8 @@ const BeyondResearch = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+          <div ref={textRef} className="reveal-fade-left space-y-6">
+            <div className="glass-card p-8">
               <p className="text-lg text-gray-700 leading-relaxed">
                 I find strength and inspiration in nature, especially through
                 the challenges of rock and ice climbing. Each climb refines my
@@ -92,16 +96,16 @@ const BeyondResearch = () => {
 
             {/* Climbing Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-primary-600 mb-2">
+              <div className="glass-card p-6 text-center">
+                <div className="text-3xl font-bold gradient-text mb-2">
                   Style
                 </div>
                 <div className="text-gray-600 text-sm sm:text-base">
                   Multi-pitch Ice & Traditional Climbing
                 </div>
               </div>
-              <div className="bg-white rounded-xl p-6 text-center shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-primary-600 mb-2">
+              <div className="glass-card p-6 text-center">
+                <div className="text-3xl font-bold gradient-text mb-2">
                   Location
                 </div>
                 <div className="text-gray-600 text-sm sm:text-base leading-tight">
@@ -112,8 +116,8 @@ const BeyondResearch = () => {
           </div>
 
           {/* Slideshow */}
-          <div className="relative">
-            <div className="bg-white rounded-2xl p-4 shadow-2xl border border-gray-100">
+          <div ref={slideshowRef} className="reveal-fade-right relative" style={{ transitionDelay: '0.15s' }}>
+            <div className="glass-card p-4">
               <div className="relative overflow-hidden rounded-xl slideshow-container">
                 <div
                   className="relative"
@@ -124,8 +128,10 @@ const BeyondResearch = () => {
                       key={index}
                       src={slide}
                       alt={`Climbing adventure ${index + 1}`}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                        index === currentSlide ? "opacity-100" : "opacity-0"
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
+                        index === currentSlide
+                          ? "opacity-100 kenburns-active"
+                          : "opacity-0"
                       }`}
                       onLoad={handleImageLoad}
                     />
@@ -135,41 +141,39 @@ const BeyondResearch = () => {
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/60 backdrop-blur-md hover:bg-white/80 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 border border-white/30"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/60 backdrop-blur-md hover:bg-white/80 text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 border border-white/30"
                 >
                   <ChevronRight size={24} />
                 </button>
 
                 {/* Slide Indicators */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 bg-black/20 backdrop-blur-sm rounded-full px-3 py-2">
                   {slides.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`rounded-full transition-all duration-300 ${
                         index === currentSlide
-                          ? "bg-white scale-125"
-                          : "bg-white/50 hover:bg-white/75"
+                          ? "bg-white w-6 h-3"
+                          : "bg-white/50 hover:bg-white/75 w-3 h-3"
                       }`}
                     />
                   ))}
                 </div>
               </div>
             </div>
-
-            {/* Decorative Elements - Removed for cleaner appearance */}
           </div>
         </div>
 
         {/* Additional Info */}
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+        <div ref={summaryRef} className="reveal-fade-up mt-16 text-center" style={{ transitionDelay: '0.1s' }}>
+          <div className="glass-card p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               The Climbing Philosophy
             </h3>

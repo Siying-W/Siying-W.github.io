@@ -30,9 +30,9 @@ function App() {
           <Contact />
         </section>
       </main>
-      <footer className="bg-gray-50 border-t border-gray-100 py-4">
-        <div className="text-center text-gray-600 text-sm">
-          Copyright © 2025 Siying Wang. All Rights Reserved.
+      <footer className="bg-white/70 backdrop-blur-xl border-t border-white/40 py-4">
+        <div className="text-center text-gray-500 text-sm">
+          Copyright &copy; 2025 Siying Wang. All Rights Reserved.
         </div>
       </footer>
     </div>
