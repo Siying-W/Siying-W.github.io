@@ -153,7 +153,7 @@ const BeyondResearch = () => {
       <div ref={heroRef} className="reveal-fade-up w-full" style={{ transitionDelay: '0.1s' }}>
         <div
           ref={containerRef}
-          className="relative w-full h-[75vh] lg:h-screen min-h-[500px] overflow-hidden cursor-move"
+          className="relative w-full h-[100dvh] lg:h-screen overflow-hidden cursor-move"
           onMouseMove={handleMouseMove}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}

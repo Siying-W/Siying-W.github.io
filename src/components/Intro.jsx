@@ -25,7 +25,7 @@ const Intro = () => {
               <h1 className="text-reveal-line text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                 Hello, I'm
               </h1>
-              <h2 className="text-reveal-line text-5xl lg:text-7xl font-bold gradient-text leading-tight">
+              <h2 className="text-reveal-line text-5xl lg:text-7xl font-bold gradient-text leading-snug">
                 Siying (Alice) Wang
               </h2>
               <h3 className="text-reveal-line text-2xl lg:text-3xl font-semibold text-gray-700 dark:text-gray-300">
