@@ -22,7 +22,7 @@ function App() {
           <section id="research">
             <Research />
           </section>
-          <section id="experience">
+          <section id="teaching">
             <Experience />
           </section>
           <section id="beyond-research">
@@ -32,9 +32,15 @@ function App() {
             <Contact />
           </section>
         </main>
-        <footer className="bg-white/70 dark:bg-dark-900/70 backdrop-blur-xl border-t border-white/40 dark:border-dark-700/40 py-4 transition-colors duration-300">
-          <div className="text-center text-gray-500 dark:text-gray-500 text-sm">
-            Copyright &copy; {new Date().getFullYear()} Siying Wang. All Rights Reserved.
+        <footer className="bg-white/70 dark:bg-dark-900/70 backdrop-blur-xl border-t border-white/40 dark:border-dark-700/40 py-6 transition-colors duration-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center text-gray-500 dark:text-gray-500 text-sm">
+            <p>Copyright &copy; {new Date().getFullYear()} Siying Wang. All Rights Reserved.</p>
+            <span className="hidden sm:inline text-gray-400 dark:text-gray-600" aria-hidden="true">
+              ·
+            </span>
+            <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-600">
+              Last updated on {__LAST_DEPLOYED_DATE__}.
+            </p>
           </div>
         </footer>
       </div>

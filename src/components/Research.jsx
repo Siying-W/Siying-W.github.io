@@ -7,7 +7,7 @@ import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 const Research = () => {
   const [showAbstract, setShowAbstract] = useState(false);
   const headerRef = useScrollReveal();
-  const setCardRef = useStaggerReveal(3);
+  const setCardRef = useStaggerReveal(4);
 
   return (
     <div className="full-width-bg mesh-bg-1 pt-16 sm:pt-20">
@@ -131,6 +131,28 @@ const Research = () => {
 
           {/* Work in Progress */}
           <div ref={setCardRef(2)} className="stagger-item glass-card p-8">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="p-3 bg-purple-100/80 dark:bg-purple-900/30 backdrop-blur-sm rounded-full flex-shrink-0 self-center sm:self-start">
+                <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+              </div>
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Whose Stars Are They? Co-Ethnic Evaluation, Authenticity, and
+                  the Cross-Cultural Limits of a Single Restaurant Rating.
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-3">
+                  With Limin Fang, Nitin Mehta & Chunhua Wu
+                </p>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100/80 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium backdrop-blur-sm">
+                  <TrendingUp className="w-4 h-4" />
+                  Work in Progress
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Work in Progress */}
+          <div ref={setCardRef(3)} className="stagger-item glass-card p-8">
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <div className="p-3 bg-purple-100/80 dark:bg-purple-900/30 backdrop-blur-sm rounded-full flex-shrink-0 self-center sm:self-start">
                 <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />

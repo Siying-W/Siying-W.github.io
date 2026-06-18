@@ -52,14 +52,16 @@ const BeyondResearch = () => {
     });
   }, [currentSlide]);
 
-  // Smooth interpolation loop — lerps currentY toward targetY
+  // Smooth interpolation loop — lerps currentY toward targetY.
+  // The factor is the easing gain per frame (~60fps): lower = slower, smoother,
+  // and lags further behind the cursor so fast pointer moves don't whip the photo.
   useEffect(() => {
     const lerp = (a, b, t) => a + (b - a) * t;
     const tick = () => {
       const prev = currentYRef.current;
-      const next = lerp(prev, targetYRef.current, 0.08);
+      const next = lerp(prev, targetYRef.current, 0.02);
       // Stop updating if close enough
-      if (Math.abs(next - prev) > 0.05) {
+      if (Math.abs(next - prev) > 0.02) {
         currentYRef.current = next;
         const container = containerRef.current;
         if (container) {

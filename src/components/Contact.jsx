@@ -1,12 +1,18 @@
 import { Building, Linkedin, Mail } from 'lucide-react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 
+const RESEARCH_AREAS = [
+  'Industrial Organization',
+  'Spatial Economics',
+  'Urban Economics',
+  'International Trade',
+];
+
 const Contact = () => {
   const headerRef = useScrollReveal();
   const contactCardRef = useScrollReveal({ threshold: 0.1 });
   const researchCardRef = useScrollReveal({ threshold: 0.1 });
-  const setAreaRef = useStaggerReveal(4);
-  const bottomRef = useScrollReveal({ threshold: 0.1 });
+  const setAreaRef = useStaggerReveal(RESEARCH_AREAS.length);
 
   return (
     <div className="full-width-bg animated-gradient-bg relative overflow-hidden pt-16 sm:pt-20">
@@ -103,45 +109,19 @@ const Contact = () => {
               <div className="glass-card p-8">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Research Areas</h2>
 
-                <div className="space-y-4">
-                  <div ref={setAreaRef(0)} className="stagger-item flex items-center gap-3 p-4 bg-blue-50/60 dark:bg-blue-900/20 backdrop-blur-sm rounded-xl border border-blue-200/40 dark:border-blue-800/20 transition-all duration-300 hover:bg-blue-50/90 dark:hover:bg-blue-900/30 hover:translate-x-1">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-blue-800 dark:text-blue-300 font-medium">Industrial Organization</span>
-                  </div>
-                  <div ref={setAreaRef(1)} className="stagger-item flex items-center gap-3 p-4 bg-green-50/60 dark:bg-green-900/20 backdrop-blur-sm rounded-xl border border-green-200/40 dark:border-green-800/20 transition-all duration-300 hover:bg-green-50/90 dark:hover:bg-green-900/30 hover:translate-x-1">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-green-800 dark:text-green-300 font-medium">Spatial Economics</span>
-                  </div>
-                  <div ref={setAreaRef(2)} className="stagger-item flex items-center gap-3 p-4 bg-purple-50/60 dark:bg-purple-900/20 backdrop-blur-sm rounded-xl border border-purple-200/40 dark:border-purple-800/20 transition-all duration-300 hover:bg-purple-50/90 dark:hover:bg-purple-900/30 hover:translate-x-1">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                    <span className="text-purple-800 dark:text-purple-300 font-medium">Urban Economics</span>
-                  </div>
-                  <div ref={setAreaRef(3)} className="stagger-item flex items-center gap-3 p-4 bg-orange-50/60 dark:bg-orange-900/20 backdrop-blur-sm rounded-xl border border-orange-200/40 dark:border-orange-800/20 transition-all duration-300 hover:bg-orange-50/90 dark:hover:bg-orange-900/30 hover:translate-x-1">
-                    <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                    <span className="text-orange-800 dark:text-orange-300 font-medium">International Trade</span>
-                  </div>
+                <div className="space-y-3">
+                  {RESEARCH_AREAS.map((area, index) => (
+                    <div
+                      key={area}
+                      ref={setAreaRef(index)}
+                      className="stagger-item flex items-center gap-3 p-4 bg-gray-50/60 dark:bg-dark-800/40 backdrop-blur-sm rounded-xl border border-gray-200/30 dark:border-dark-600/30 transition-all duration-300 hover:bg-gray-100/80 dark:hover:bg-dark-700/50 hover:translate-x-1"
+                    >
+                      <div className="w-2.5 h-2.5 bg-primary-500 dark:bg-primary-400 rounded-full flex-shrink-0" />
+                      <span className="text-gray-700 dark:text-gray-300 font-medium">{area}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-
-              <div className="glass-card p-6 bg-gradient-to-r from-primary-50/50 to-blue-50/50 dark:from-primary-900/20 dark:to-blue-900/20 border-primary-100/30 dark:border-primary-800/20">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Collaboration Opportunities</h3>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  I'm always interested in discussing potential research collaborations,
-                  particularly in areas related to spatial economics, urban development,
-                  and international trade analysis.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Contact Info */}
-          <div ref={bottomRef} className="reveal-fade-up mt-12 text-center" style={{ transitionDelay: '0.2s' }}>
-            <div className="glass-card p-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Response Time</h3>
-              <p className="text-gray-700 dark:text-gray-300 text-lg max-w-3xl mx-auto">
-                I typically respond to emails within 24-48 hours during weekdays.
-                For urgent matters, please include "URGENT" in your subject line.
-              </p>
             </div>
           </div>
         </div>

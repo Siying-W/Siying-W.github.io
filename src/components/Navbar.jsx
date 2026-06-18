@@ -13,7 +13,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'About', id: 'about' },
     { name: 'Research', id: 'research' },
-    { name: 'Experience', id: 'experience' },
+    { name: 'Teaching', id: 'teaching' },
     { name: 'Beyond Research', id: 'beyond-research' },
     { name: 'Contact', id: 'contact' },
   ];

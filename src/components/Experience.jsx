@@ -1,11 +1,70 @@
 import { BookOpen, GraduationCap, Users } from 'lucide-react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
+// Flat "emoji-style" flags (Twemoji, CC-BY 4.0), shown as circular badges.
+// viewBox is cropped to the flag's bounds (0 5 36 26) so object-cover fills the
+// round frame with no transparent caps. China's stars are nudged right (in the
+// SVG) so the canton isn't clipped by the circle.
+import canadaFlag from '../assets/flags/ca-twemoji.svg';
+import chinaFlag from '../assets/flags/cn-twemoji.svg';
+
+const ROLE_STYLES = {
+  instructor: {
+    icon: BookOpen,
+    label: 'Instructor',
+    badgeClass:
+      'inline-flex items-center gap-2 px-3 py-1 bg-primary-100/70 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 rounded-full text-sm font-medium backdrop-blur-sm border border-primary-200/40 dark:border-primary-700/30',
+  },
+  ta: {
+    icon: Users,
+    label: 'Teaching Assistant',
+    badgeClass:
+      'inline-flex items-center gap-2 px-3 py-1 bg-slate-200/60 dark:bg-slate-700/35 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium backdrop-blur-sm border border-slate-300/40 dark:border-slate-600/30',
+  },
+};
+
+// Teaching cards: three-step gradient for UBC (richest at top); SHUFE uses the top tier.
+const TEACHING_CARD_GRADIENT = [
+  [
+    'border-primary-300/55 shadow-md shadow-primary-500/10',
+    'bg-gradient-to-br from-[#b8dff5] to-[#dceefb]',
+    'dark:!bg-gradient-to-br dark:!from-[#1e4a66] dark:!to-[#122a3d]',
+    'dark:border-primary-400/45 dark:shadow-lg dark:shadow-primary-500/20',
+  ].join(' '),
+  [
+    'border-primary-200/40 shadow-sm shadow-primary-500/5',
+    'bg-gradient-to-br from-[#cce9f8] to-[#e8f4fc]',
+    'dark:!bg-gradient-to-br dark:!from-[#18354a] dark:!to-[#101f2e]',
+    'dark:border-primary-500/32 dark:shadow-md dark:shadow-primary-600/12',
+  ].join(' '),
+  [
+    'border-primary-100/30',
+    'bg-gradient-to-br from-[#e2f2fa] to-[#f1f8fc]',
+    'dark:!bg-gradient-to-br dark:!from-[#142a3a] dark:!to-[#0c1520]',
+    'dark:border-primary-600/22 dark:shadow-sm dark:shadow-primary-800/8',
+  ].join(' '),
+];
+
+const UBC_COURSES = [
+  { title: 'Urban Land Economics (2022W, 2023W)', role: 'instructor' },
+  { title: 'International Economics (Undergraduate)', role: 'ta' },
+  { title: 'Managerial Economics (MBA)', role: 'ta' },
+];
+
+function RoleBadge({ role }) {
+  const { icon: Icon, label, badgeClass } = ROLE_STYLES[role];
+
+  return (
+    <div className={badgeClass}>
+      <Icon className="w-4 h-4" />
+      {label}
+    </div>
+  );
+}
 
 const Experience = () => {
   const headerRef = useScrollReveal();
-  const setTeachingRef = useStaggerReveal(3);
-  const setRaRef = useStaggerReveal(2);
-  const summaryRef = useScrollReveal({ threshold: 0.1 });
+  const setTeachingRef = useStaggerReveal(UBC_COURSES.length);
+  const setRaRef = useStaggerReveal(1);
 
   return (
     <div className="full-width-bg mesh-bg-2 pt-16 sm:pt-20">
@@ -16,93 +75,59 @@ const Experience = () => {
               <GraduationCap className="w-10 h-10 text-primary-600 dark:text-primary-400" />
             </div>
           </div>
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Experience
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+            Teaching
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Teaching and research experience across various academic levels
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Teaching Section */}
+          {/* Shanghai University of Finance and Economics */}
           <div className="space-y-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-green-100/80 dark:bg-green-900/30 backdrop-blur-sm rounded-full">
-                <BookOpen className="w-6 h-6 text-green-600 dark:text-green-400" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Teaching</h2>
+              <img
+                src={chinaFlag}
+                alt="Flag of China"
+                className="w-11 h-11 shrink-0 rounded-full object-cover shadow-sm ring-1 ring-black/10 dark:ring-white/15"
+              />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Shanghai University of Finance and Economics</h2>
             </div>
 
             <div className="space-y-6">
-              <div ref={setTeachingRef(0)} className="stagger-item glass-card p-6 bg-gradient-to-br from-green-50/70 to-emerald-50/40 dark:from-green-900/20 dark:to-emerald-900/10 border-green-200/30 dark:border-green-800/20">
-                <h3 className="font-semibold text-green-800 dark:text-green-300 mb-2">Urban Land Economics (2022W, 2023W)</h3>
-                <p className="text-green-700 dark:text-green-400 mb-2">University of British Columbia, Sauder School of Business</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-200/60 dark:bg-green-800/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium backdrop-blur-sm">
-                  <BookOpen className="w-4 h-4" />
-                  Teaching Assistant
-                </div>
-              </div>
-
-              <div ref={setTeachingRef(1)} className="stagger-item glass-card p-6 bg-gradient-to-br from-blue-50/70 to-sky-50/40 dark:from-blue-900/20 dark:to-sky-900/10 border-blue-200/30 dark:border-blue-800/20">
-                <h3 className="font-semibold text-blue-800 dark:text-blue-300 mb-2">International Economics (Undergraduate)</h3>
-                <p className="text-blue-700 dark:text-blue-400 mb-2">University of British Columbia, Sauder School of Business</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-200/60 dark:bg-blue-800/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium backdrop-blur-sm">
-                  <BookOpen className="w-4 h-4" />
-                  Teaching Assistant
-                </div>
-              </div>
-
-              <div ref={setTeachingRef(2)} className="stagger-item glass-card p-6 bg-gradient-to-br from-purple-50/70 to-violet-50/40 dark:from-purple-900/20 dark:to-violet-900/10 border-purple-200/30 dark:border-purple-800/20">
-                <h3 className="font-semibold text-purple-800 dark:text-purple-300 mb-2">Managerial Economics (MBA)</h3>
-                <p className="text-purple-700 dark:text-purple-400 mb-2">University of British Columbia, Sauder School of Business</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-200/60 dark:bg-purple-800/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium backdrop-blur-sm">
-                  <BookOpen className="w-4 h-4" />
-                  Teaching Assistant
-                </div>
+              <div ref={setRaRef(0)} className={`stagger-item glass-card p-6 ${TEACHING_CARD_GRADIENT[0]}`}>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                  International Economics II: International Finance (Undergraduate 2025W)
+                </h3>
+                <RoleBadge role="instructor" />
               </div>
             </div>
           </div>
 
-          {/* Research Assistant Section */}
+          {/* University of British Columbia */}
           <div className="space-y-6">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-orange-100/80 dark:bg-orange-900/30 backdrop-blur-sm rounded-full">
-                <Users className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+              <img
+                src={canadaFlag}
+                alt="Flag of Canada"
+                className="w-11 h-11 shrink-0 rounded-full object-cover shadow-sm ring-1 ring-black/10 dark:ring-white/15"
+              />
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">University of British Columbia</h2>
+                <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-0.5">Sauder School of Business</p>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Research Assistant</h2>
             </div>
 
             <div className="space-y-6">
-              <div ref={setRaRef(0)} className="stagger-item glass-card p-6 bg-gradient-to-br from-orange-50/70 to-amber-50/40 dark:from-orange-900/20 dark:to-amber-900/10 border-orange-200/30 dark:border-orange-800/20">
-                <h3 className="font-semibold text-orange-800 dark:text-orange-300 mb-2">Leader of an undergraduate RA group</h3>
-                <p className="text-orange-700 dark:text-orange-400 mb-2">University of British Columbia</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-200/60 dark:bg-orange-800/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium backdrop-blur-sm">
-                  <Users className="w-4 h-4" />
-                  Research Assistant
+              {UBC_COURSES.map((course, index) => (
+                <div
+                  key={course.title}
+                  ref={setTeachingRef(index)}
+                  className={`stagger-item glass-card p-6 ${TEACHING_CARD_GRADIENT[index]}`}
+                >
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3>
+                  <RoleBadge role={course.role} />
                 </div>
-              </div>
-
-              <div ref={setRaRef(1)} className="stagger-item glass-card p-6 bg-gradient-to-br from-indigo-50/70 to-violet-50/40 dark:from-indigo-900/20 dark:to-violet-900/10 border-indigo-200/30 dark:border-indigo-800/20">
-                <h3 className="font-semibold text-indigo-800 dark:text-indigo-300 mb-2">RA for Prof. Ken Kikkawa</h3>
-                <p className="text-indigo-700 dark:text-indigo-400 mb-2">University of British Columbia</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-200/60 dark:bg-indigo-800/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium backdrop-blur-sm">
-                  <Users className="w-4 h-4" />
-                  Research Assistant
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
-        </div>
-
-        {/* Additional Info */}
-        <div ref={summaryRef} className="reveal-fade-up mt-16 text-center" style={{ transitionDelay: '0.2s' }}>
-          <div className="glass-card p-8 bg-gradient-to-r from-primary-50/60 to-blue-50/60 dark:from-primary-900/20 dark:to-blue-900/20 border-primary-100/30 dark:border-primary-800/20">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Academic Journey</h3>
-            <p className="text-gray-700 dark:text-gray-300 text-lg max-w-3xl mx-auto">
-              From teaching assistant roles to leading research groups, I've developed a comprehensive
-              understanding of both undergraduate and graduate education while contributing to cutting-edge research.
-            </p>
           </div>
         </div>
       </div>
