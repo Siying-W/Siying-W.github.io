@@ -1,4 +1,4 @@
-import { BookOpen, GraduationCap, Users } from 'lucide-react';
+import { BookOpen, CalendarDays, GraduationCap, Users } from 'lucide-react';
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 // Flat "emoji-style" flags (Twemoji, CC-BY 4.0), shown as circular badges.
 // viewBox is cropped to the flag's bounds (0 5 36 26) so object-cover fills the
@@ -45,9 +45,17 @@ const TEACHING_CARD_GRADIENT = [
 ];
 
 const UBC_COURSES = [
-  { title: 'Urban Land Economics (2022W, 2023W)', role: 'instructor' },
+  { title: 'Urban Land Economics', term: '2022W, 2023W', role: 'instructor' },
   { title: 'International Economics (Undergraduate)', role: 'ta' },
   { title: 'Managerial Economics (MBA)', role: 'ta' },
+];
+
+const SHUFE_COURSES = [
+  {
+    title: 'International Economics II: International Finance (Undergraduate)',
+    term: '2025W',
+    role: 'instructor',
+  },
 ];
 
 function RoleBadge({ role }) {
@@ -61,10 +69,28 @@ function RoleBadge({ role }) {
   );
 }
 
+function TermBadge({ term }) {
+  return (
+    <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-200/45 text-stone-600 rounded-full text-sm font-medium backdrop-blur-sm border border-stone-300/25 dark:bg-slate-800/45 dark:text-slate-400 dark:border-slate-600/25">
+      <CalendarDays className="w-4 h-4" />
+      {term}
+    </div>
+  );
+}
+
+function CourseMeta({ role, term }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <RoleBadge role={role} />
+      {term ? <TermBadge term={term} /> : null}
+    </div>
+  );
+}
+
 const Experience = () => {
   const headerRef = useScrollReveal();
   const setTeachingRef = useStaggerReveal(UBC_COURSES.length);
-  const setRaRef = useStaggerReveal(1);
+  const setRaRef = useStaggerReveal(SHUFE_COURSES.length);
 
   return (
     <div className="full-width-bg mesh-bg-2 pt-16 sm:pt-20">
@@ -80,54 +106,54 @@ const Experience = () => {
           </h1>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-6 lg:grid-cols-2 lg:items-start">
           {/* Shanghai University of Finance and Economics */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3 mb-6">
-              <img
-                src={chinaFlag}
-                alt="Flag of China"
-                className="w-11 h-11 shrink-0 rounded-full object-cover shadow-sm ring-1 ring-black/10 dark:ring-white/15"
-              />
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Shanghai University of Finance and Economics</h2>
-            </div>
+          <div className="flex items-center gap-3 lg:col-start-1 lg:row-start-1">
+            <img
+              src={chinaFlag}
+              alt="Flag of China"
+              className="w-11 h-11 shrink-0 rounded-full object-cover shadow-sm ring-1 ring-black/10 dark:ring-white/15"
+            />
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Shanghai University of Finance and Economics</h2>
+          </div>
 
-            <div className="space-y-6">
-              <div ref={setRaRef(0)} className={`stagger-item glass-card p-6 ${TEACHING_CARD_GRADIENT[0]}`}>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                  International Economics II: International Finance (Undergraduate 2025W)
-                </h3>
-                <RoleBadge role="instructor" />
+          <div className="space-y-6 lg:col-start-1 lg:row-start-2">
+            {SHUFE_COURSES.map((course, index) => (
+              <div
+                key={course.title}
+                ref={setRaRef(index)}
+                className={`stagger-item glass-card p-6 ${TEACHING_CARD_GRADIENT[0]}`}
+              >
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3>
+                <CourseMeta role={course.role} term={course.term} />
               </div>
-            </div>
+            ))}
           </div>
 
           {/* University of British Columbia */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3 mb-6">
-              <img
-                src={canadaFlag}
-                alt="Flag of Canada"
-                className="w-11 h-11 shrink-0 rounded-full object-cover shadow-sm ring-1 ring-black/10 dark:ring-white/15"
-              />
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">University of British Columbia</h2>
-                <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-0.5">Sauder School of Business</p>
-              </div>
+          <div className="flex items-center gap-3 lg:col-start-2 lg:row-start-1">
+            <img
+              src={canadaFlag}
+              alt="Flag of Canada"
+              className="w-11 h-11 shrink-0 rounded-full object-cover shadow-sm ring-1 ring-black/10 dark:ring-white/15"
+            />
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">University of British Columbia</h2>
+              <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-0.5">Sauder School of Business</p>
             </div>
+          </div>
 
-            <div className="space-y-6">
-              {UBC_COURSES.map((course, index) => (
-                <div
-                  key={course.title}
-                  ref={setTeachingRef(index)}
-                  className={`stagger-item glass-card p-6 ${TEACHING_CARD_GRADIENT[index]}`}
-                >
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3>
-                  <RoleBadge role={course.role} />
-                </div>
-              ))}
-            </div>
+          <div className="space-y-6 lg:col-start-2 lg:row-start-2">
+            {UBC_COURSES.map((course, index) => (
+              <div
+                key={course.title}
+                ref={setTeachingRef(index)}
+                className={`stagger-item glass-card p-6 ${TEACHING_CARD_GRADIENT[index]}`}
+              >
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3>
+                <CourseMeta role={course.role} term={course.term} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

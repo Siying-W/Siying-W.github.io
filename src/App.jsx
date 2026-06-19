@@ -28,7 +28,7 @@ function App() {
           <section id="beyond-research">
             <BeyondResearch />
           </section>
-          <section id="contact">
+          <section id="contact" className="min-h-0">
             <Contact />
           </section>
         </main>

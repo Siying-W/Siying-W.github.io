@@ -1,6 +1,6 @@
 import { BookOpen } from 'lucide-react';
-import aboutPhoto from '/assets/about sq.jpg';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import aboutPhoto from '/assets/about sq.jpg';
 
 const About = () => {
   const headerRef = useScrollReveal();

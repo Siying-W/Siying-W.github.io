@@ -15,7 +15,7 @@ const Contact = () => {
   const setAreaRef = useStaggerReveal(RESEARCH_AREAS.length);
 
   return (
-    <div className="full-width-bg animated-gradient-bg relative overflow-hidden pt-16 sm:pt-20">
+    <div className="w-full animated-gradient-bg relative overflow-hidden pt-16 sm:pt-20 pb-10 sm:pb-12">
       {/* Subtle floating blobs */}
       <div className="blob blob-animate-2 w-64 h-64 bg-primary-300/10 dark:bg-primary-500/8 top-20 -right-20" />
       <div className="blob blob-animate-3 w-48 h-48 bg-indigo-300/10 dark:bg-indigo-500/8 bottom-40 -left-10" />
@@ -27,19 +27,16 @@ const Contact = () => {
               <Mail className="w-10 h-10 text-primary-600 dark:text-primary-400" />
             </div>
           </div>
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
             Contact
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Get in touch for research collaborations, academic discussions, or professional inquiries
-          </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
             {/* Contact Information */}
-            <div ref={contactCardRef} className="reveal-fade-left space-y-6">
-              <div className="glass-card p-8">
+            <div ref={contactCardRef} className="reveal-fade-left h-full">
+              <div className="glass-card p-8 h-full flex flex-col">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get In Touch</h2>
 
                 <div className="space-y-6">
@@ -105,8 +102,8 @@ const Contact = () => {
             </div>
 
             {/* Research Areas & Collaboration */}
-            <div ref={researchCardRef} className="reveal-fade-right space-y-6" style={{ transitionDelay: '0.15s' }}>
-              <div className="glass-card p-8">
+            <div ref={researchCardRef} className="reveal-fade-right h-full" style={{ transitionDelay: '0.15s' }}>
+              <div className="glass-card p-8 h-full flex flex-col">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Research Areas</h2>
 
                 <div className="space-y-3">
